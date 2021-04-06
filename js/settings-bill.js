@@ -1,10 +1,14 @@
 // get a reference to the sms or call radio buttons
 
 // get refences to all the settings fields
-
+billItemTypeWithSettings
 //get a reference to the add button
 
 //get a reference to the 'Update settings' button
+
+callTotalSettings
+smsTotalSettings
+totalSettings
 
 // create a variables that will keep track of all the settings
 
