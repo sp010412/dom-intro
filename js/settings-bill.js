@@ -61,7 +61,7 @@ function addButtonOne() {
     }
 }
 
-alert()
+// alert()
     //update the totals that is displayed on the screen.
     callTotalSettingsElem.innerHTML = parseInt(callsTotal).toFixed(2);
     smsTotalSettingsElem.innerHTML = parseInt(smsTotal).toFixed(2);
@@ -73,16 +73,16 @@ alert()
         // adding the danger class will make the text red
         totalSettingsElem.classList.add("warning");
     }
-    else if (totalCost >= criticalLevelSettingElem.value) {
+    if (totalCost >= criticalLevelSettingElem.value) {
         totalSettingsElem.classList.add("danger");
     }
 }
 
 function addButtonTwo() {
-    callCost = callCostSettingElem.value;
-    smsCost = smsCostSettingElem.value;
-    warningLevel =  warningLevelSettingElem.value;
-    criticalLevel = criticalLevelSettingElem.value;
+    callCost = Number(callCostSettingElem.value);
+    smsCost = Number(smsCostSettingElem.value);
+    warningLevel =  Number(warningLevelSettingElem.value);
+    criticalLevel = Number(criticalLevelSettingElem.value);
     // alert(callCost)
 
     //update the totals that is displayed on the screen.
