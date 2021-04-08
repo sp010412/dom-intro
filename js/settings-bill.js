@@ -4,7 +4,7 @@ var checkedRadioBtn = document.querySelector(".billItemTypeWithSettings");
 // get references to all the settings fields
 var callCostSettingElem = document.querySelector(".callCostSetting");
 var smsCostSettingElem = document.querySelector(".smsCostSetting");
-var warningLevelsettingElem = document.querySelector(".warningLevelsetting");
+var warningLevelSettingElem = document.querySelector(".warningLevelSetting");
 var criticalLevelSettingElem = document.querySelector(".criticalLevelSetting");
 
 //get references to all the total fields
@@ -48,25 +48,28 @@ billItemTypeRadioLastElem.addEventListener('click', addButtonOne);
 
 
 function addButtonOne() {
-    var checkedRadioBtn = document.querySelector("input[name='billItemType']:checked");
+    var checkedRadioBtn = document.querySelector("input[name='billItemTypeWithSettings']:checked");
     if (checkedRadioBtn) {
         var billItemType = checkedRadioBtn.value
-    }
-
+        // alert(billItemType)
     if (billItemType === "call") {
-        callsTotal += callCostSettingElem.value;
+        // alert(callCost)
+        callsTotal += callCost;
     }
     else if (billItemType === "sms") {
-        smsTotal += smsCostSettingElem.value;
+        smsTotal += smsCost;
     }
+}
+
+alert()
     //update the totals that is displayed on the screen.
-    callTotalSettingsElem.innerHTML = callsTotal.toFixed(2);
-    smsTotalSettingsElem.innerHTML = smsTotal.toFixed(2);
+    callTotalSettingsElem.innerHTML = parseInt(callsTotal).toFixed(2);
+    smsTotalSettingsElem.innerHTML = parseInt(smsTotal).toFixed(2);
     var totalCost = callsTotal + smsTotal;
-    totalSettingsElem.innerHTML = totalCost.toFixed(2);
+    totalSettingsElem.innerHTML = parseInt(totalCost).toFixed(2);
 
     //color the total based on the criteria
-    if (totalCost >= warningLevelsettingElem.value) {
+    if (totalCost >= warningLevelSettingElem.value) {
         // adding the danger class will make the text red
         totalSettingsElem.classList.add("warning");
     }
@@ -76,19 +79,15 @@ function addButtonOne() {
 }
 
 function addButtonTwo() {
-    if (checkedRadioBtn) {
-        var billItemType = checkedRadioBtn.value
-    }
+    callCost = callCostSettingElem.value;
+    smsCost = smsCostSettingElem.value;
+    warningLevel =  warningLevelSettingElem.value;
+    criticalLevel = criticalLevelSettingElem.value;
+    // alert(callCost)
 
-    if (billItemType === "call") {
-        callsCost += callCostSettingElem.value;
-    }
-    else if (billItemType === "sms") {
-        smsCost += smsCostSettingElem.value;
-    }
     //update the totals that is displayed on the screen.
-    callCostSettingElem.innerHTML = callCost.toFixed(2);
-    smsCostSettingElem .innerHTML = smsCost.toFixed(2);
-    warningLevelsettingElem.innerHTML = warningLevel.toFixed(2);
-    criticalLevelSettingElem.innerHTML = criticalLevel.toFixed(2);
+    // callCostSettingElem.innerHTML = callCost.toFixed(2);
+    // smsCostSettingElem.innerHTML = smsCost.toFixed(2);
+    // warningLevelsettingElem.innerHTML = warningLevel.toFixed(2);
+    // criticalLevelSettingElem.innerHTML = criticalLevel.toFixed(2);
 }

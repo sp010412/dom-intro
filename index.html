@@ -195,11 +195,11 @@
             <div class="six columns">
               <h5>Bill type</h5>
               <label class="">
-                <input type="radio" name="billItemTypeWithSettings" class="billItemTypeWithSettings">
+                <input type="radio" value="call" name="billItemTypeWithSettings" class="billItemTypeWithSettings">
                 <span class="label-body">Call</span>
               </label>
               <label class="">
-                <input type="radio" name="billItemTypeWithSettings" class="billItemTypeWithSettings">
+                <input type="radio" value="sms" name="billItemTypeWithSettings" class="billItemTypeWithSettings">
                 <span class="label-body" >SMS</span>
               </label>
               <button class="button-primary billItemTypeRadioLast" type="button" name="button">Add</button>
@@ -224,13 +224,13 @@
             <div class="six columns">
               <h5>Settings</h5>
               <label for="exampleEmailInput">Call cost</label>
-              <input class="u-full-width callCostSetting" type="number" placeholder="eg. 2.55">
+              <input class="u-full-width callCostSetting" type="number" value="10" placeholder="eg. 2.55">
               <label for="exampleEmailInput">SMS cost</label>
-              <input class="u-full-width smsCostSetting" type="number" placeholder="eg. 0.65" >
+              <input class="u-full-width smsCostSetting" value="20" type="number" placeholder="eg. 0.65" >
               <label for="">Warning level</label>
-              <input class="u-full-width warningLevelSetting " type="number" placeholder="eg. 30.00" class="warningLevelSetting" >
+              <input class="u-full-width warningLevelSetting " value="50" type="number" placeholder="eg. 30.00" class="warningLevelSetting" >
               <label for="">Critical level</label>
-              <input class="u-full-width criticalLevelSetting" type="number" placeholder="eg. 65.00" >
+              <input class="u-full-width criticalLevelSetting" value="100" type="number" placeholder="eg. 65.00" >
               <button class="button-primary updateSettings" type="button" name="button">Update settings</button>
 
             </div>
