@@ -17,9 +17,12 @@ var smsTotal = 0;
 // * add nothing for invalid values that is not 'call' or 'sms'.
 // * display the latest total on the screen
 
+
+
 function textBillTotal(){
     // get the value entered in the billType textfield
     var billTypeEntered = billTypeTextElement.value.trim();
+    
     // update the correct total
     if (billTypeEntered === "call"){
         callsTotal += 2.75
