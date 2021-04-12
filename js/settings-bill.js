@@ -30,10 +30,10 @@ var criticalLevel = 0;
 // create a variables that will keep track of all three totals.
 var callsTotalDo = 0;
 var smsTotalDo = 0;
-
+var totalCostSet = 0;
 
 //add an event listener for when the 'Update settings' button is pressed
-updateSettingsElem.addEventListener('click', addButtonTwo);
+updateSettingsElem.addEventListener('click', settingsFunction);
 
 //add an event listener for when the add button is pressed
 billItemTypeRadioLastElem.addEventListener('click', addButtonOne);
@@ -50,22 +50,28 @@ billItemTypeRadioLastElem.addEventListener('click', addButtonOne);
 function addButtonOne() {
     var checkedRadioBtn = document.querySelector("input[name='billItemTypeWithSettings']:checked");
     if (checkedRadioBtn) {
-        var billItemType = checkedRadioBtn.value
-        // alert(billItemType)
-    if (billItemType === "call") {
-        // alert(callCost)
-        callsTotalDo += callCostSet;
-    }
-    else if (billItemType === "sms") {
-        smsTotalDo += smsCostSet;
-    }
-}
+        if (totalCostSet > criticalLevel ) {
+            return;
+        } else {
+            var billItemType = checkedRadioBtn.value
+           // alert(totalCostSet)
 
-// alert()
+            // alert(billItemType)
+            if (billItemType === "call") {
+                // alert(callCost)
+                callsTotalDo += callCostSet;
+            }
+            else if (billItemType === "sms") {
+                smsTotalDo += smsCostSet;
+            }
+        }
+    }
+
+    // alert()
     //update the totals that is displayed on the screen.
     callTotalSettingsElem.innerHTML = callsTotalDo.toFixed(2);
     smsTotalSettingsElem.innerHTML = smsTotalDo.toFixed(2);
-    var totalCostSet = callsTotalDo + smsTotalDo;
+    totalCostSet = callsTotalDo + smsTotalDo;
     totalSettingsElem.innerHTML = totalCostSet.toFixed(2);
 
     //color the total based on the criteria
@@ -78,10 +84,10 @@ function addButtonOne() {
     }
 }
 
-function addButtonTwo() {
+function settingsFunction() {
     callCostSet = Number(callCostSettingElem.value);
     smsCostSet = Number(smsCostSettingElem.value);
-    warningLevel =  Number(warningLevelSettingElem.value);
+    warningLevel = Number(warningLevelSettingElem.value);
     criticalLevel = Number(criticalLevelSettingElem.value);
     // alert(callCost)
 
