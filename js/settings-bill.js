@@ -49,10 +49,9 @@ billItemTypeRadioLastElem.addEventListener('click', addButtonOne);
 
 function addButtonOne() {
     var checkedRadioBtn = document.querySelector("input[name='billItemTypeWithSettings']:checked");
-    if (checkedRadioBtn) {
-        if (totalCostSet > criticalLevel ) {
-            return;
-        } else {
+        if (totalCostSet < criticalLevel ) {
+            if (checkedRadioBtn) {
+
             var billItemType = checkedRadioBtn.value
            // alert(totalCostSet)
 
