@@ -72,15 +72,7 @@ function addButtonOne() {
     smsTotalSettingsElem.innerHTML = smsTotalDo.toFixed(2);
     totalCostSet = callsTotalDo + smsTotalDo;
     totalSettingsElem.innerHTML = totalCostSet.toFixed(2);
-
-    //color the total based on the criteria
-    if (totalCostSet >= warningLevelSettingElem.value) {
-        // adding the danger class will make the text red
-        totalSettingsElem.classList.add("warning");
-    }
-    if (totalCostSet >= criticalLevelSettingElem.value) {
-        totalSettingsElem.classList.add("danger");
-    }
+colorAdd();
 }
 
 function settingsFunction() {
@@ -89,10 +81,28 @@ function settingsFunction() {
     warningLevel = Number(warningLevelSettingElem.value);
     criticalLevel = Number(criticalLevelSettingElem.value);
     // alert(callCost)
-
+colorAdd();
     //update the totals that is displayed on the screen.
     // callCostSettingElem.innerHTML = callCost.toFixed(2);
     // smsCostSettingElem.innerHTML = smsCost.toFixed(2);
     // warningLevelsettingElem.innerHTML = warningLevel.toFixed(2);
     // criticalLevelSettingElem.innerHTML = criticalLevel.toFixed(2);
+}
+function colorAdd() {
+//color the total based on the criteria
+if (totalCostSet >= warningLevel) {
+    // adding the danger class will make the text red
+    totalSettingsElem.classList.add("warning");
+    totalSettingsElem.classList.remove("danger");
+}
+if (totalCostSet >= criticalLevel) {
+    totalSettingsElem.classList.remove("warning");
+    totalSettingsElem.classList.add("danger");
+}
+if (totalCostSet < warningLevel) {
+    totalSettingsElem.classList.remove("warning");
+}
+if (totalCostSet < criticalLevel) {
+    totalSettingsElem.classList.remove("danger");
+}
 }
