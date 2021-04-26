@@ -12,7 +12,7 @@ var callTotalSettingsElem = document.querySelector(".callTotalSettings");
 var smsTotalSettingsElem = document.querySelector(".smsTotalSettings");
 var totalSettingsElem = document.querySelector(".totalSettings");
 
-var settingInst=  settingsFunction()
+
 
 
 //get a reference to the add button
@@ -49,32 +49,21 @@ billItemTypeRadioLastElem.addEventListener('click', addButtonOne);
 // * display the latest total on the screen.
 // * check the value thresholds and display the total value in the right color.
 
+var settingInsta = settingsFunction()
 
 function addButtonOne() {
     var checkedRadioBtn = document.querySelector("input[name='billItemTypeWithSettings']:checked");
-        if (totalCostSet < criticalLevel ) {
-            if (checkedRadioBtn) {
 
-            var billItemType = checkedRadioBtn.value
-           // alert(totalCostSet)
 
-            // alert(billItemType)
-            if (billItemType === "call") {
-                // alert(callCost)
-                callsTotalDo += callCostSet;
-            }
-            else if (billItemType === "sms") {
-                smsTotalDo += smsCostSet;
-            }
-        }
-    }
+    var billItemType = checkedRadioBtn.value
 
-    // alert()
-    //update the totals that is displayed on the screen.
-    callTotalSettingsElem.innerHTML = callsTotalDo.toFixed(2);
-    smsTotalSettingsElem.innerHTML = smsTotalDo.toFixed(2);
-    totalCostSet = callsTotalDo + smsTotalDo;
-    totalSettingsElem.innerHTML = totalCostSet.toFixed(2);
+
+// alert()
+//update the totals that is displayed on the screen.
+callTotalSettingsElem.innerHTML = settingInsta.getTotalCallCost().toFixed(2);
+smsTotalSettingsElem.innerHTML = settingInsta.getTotalSmsCost().toFixed(2);
+totalCostSet = callsTotalDo + smsTotalDo;
+totalSettingsElem.innerHTML = totalCostSet.toFixed(2);
 colorAdd();
 }
 
@@ -84,7 +73,7 @@ function settingsFunction() {
     warningLevel = Number(warningLevelSettingElem.value);
     criticalLevel = Number(criticalLevelSettingElem.value);
     // alert(callCost)
-colorAdd();
+    colorAdd();
     //update the totals that is displayed on the screen.
     // callCostSettingElem.innerHTML = callCost.toFixed(2);
     // smsCostSettingElem.innerHTML = smsCost.toFixed(2);
@@ -92,20 +81,20 @@ colorAdd();
     // criticalLevelSettingElem.innerHTML = criticalLevel.toFixed(2);
 }
 function colorAdd() {
-//color the total based on the criteria
-if (totalCostSet >= warningLevel) {
-    // adding the danger class will make the text red
-    totalSettingsElem.classList.add("warning");
-    totalSettingsElem.classList.remove("danger");
-}
-if (totalCostSet >= criticalLevel) {
-    totalSettingsElem.classList.remove("warning");
-    totalSettingsElem.classList.add("danger");
-}
-if (totalCostSet < warningLevel) {
-    totalSettingsElem.classList.remove("warning");
-}
-if (totalCostSet < criticalLevel) {
-    totalSettingsElem.classList.remove("danger");
-}
+    //color the total based on the criteria
+    if (totalCostSet >= warningLevel) {
+        // adding the danger class will make the text red
+        totalSettingsElem.classList.add("warning");
+        totalSettingsElem.classList.remove("danger");
+    }
+    if (totalCostSet >= criticalLevel) {
+        totalSettingsElem.classList.remove("warning");
+        totalSettingsElem.classList.add("danger");
+    }
+    if (totalCostSet < warningLevel) {
+        totalSettingsElem.classList.remove("warning");
+    }
+    if (totalCostSet < criticalLevel) {
+        totalSettingsElem.classList.remove("danger");
+    }
 }
