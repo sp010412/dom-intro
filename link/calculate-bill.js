@@ -20,24 +20,16 @@ function calculateBtnClicked() {
     //split the string
     //var billItems = billString.split(",");
     // a variable for the total phone bill.
-    calculateInsta.calculate2(billString)
+    // calculateInsta.calculate2(billString)
 
     //round to two decimals
-    billTotalElement.innerHTML = calculateInsta.total().toFixed(2);
+    billTotalElement.innerHTML = calculateInsta.calculate2(billString).toFixed(2);
     //color the total based on the criteria
-    if (roundedBillTotal >= 30) {
-        // adding the danger class will make the text red
-        billTotalElement.classList.remove("warning");
-        billTotalElement.classList.add("danger");
-    }
-    else if (roundedBillTotal >= 20) {
-        billTotalElement.classList.remove("danger");
-        billTotalElement.classList.add("warning");
-    }
-    else {
-        billTotalElement.classList.remove("warning");
-        billTotalElement.classList.remove("danger");
-    }
+
+    billTotalElement.classList.remove("warning");
+    billTotalElement.classList.remove("danger");
+    billTotalElement.classList.add(calculateInsta.color(billString));
+
 }
 
 
