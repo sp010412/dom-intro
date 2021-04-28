@@ -13,7 +13,13 @@ var smsTotalSettingsElem = document.querySelector(".smsTotalSettings");
 var totalSettingsElem = document.querySelector(".totalSettings");
 
 
+var theCallCost = 0;
+var theSmsCost = 0;
+var theWarningLevel = 0;
+var theCriticalLevel = 0;
 
+var callCostTotal = 0;
+var smsCostTotal = 0;
 
 //get a reference to the add button
 var billItemTypeRadioLastElem = document.querySelector(".billItemTypeRadioLast");
@@ -28,7 +34,7 @@ var updateSettingsElem = document.querySelector(".updateSettings");
 // create a variables that will keep track of all three totals.
 
 //add an event listener for when the 'Update settings' button is pressed
-updateSettingsElem.addEventListener('click', settingsFunction);
+updateSettingsElem.addEventListener('click', settingsFunction2);
 
 //add an event listener for when the add button is pressed
 billItemTypeRadioLastElem.addEventListener('click', addButtonOne);
@@ -43,47 +49,51 @@ billItemTypeRadioLastElem.addEventListener('click', addButtonOne);
 
 var settingInsta = settingsFunction()
 
-function addButtonOne() {
-    var checkedRadioBtn = document.querySelector("input[name='billItemTypeWithSettings']:checked");
 
-
-    var billItemType = checkedRadioBtn.value
-
-settingInsta.makeCall()
-settingInsta.sendSms()
-// alert()
-//update the totals that is displayed on the screen.
-callTotalSettingsElem.innerHTML = settingInsta.getTotalCallCost().toFixed(2);
-smsTotalSettingsElem.innerHTML = settingInsta.getTotalSmsCost().toFixed(2);
-
-totalSettingsElem.innerHTML = settingInsta.getTotalCost().toFixed(2);
-
-}
-
-function settingsFunction() {
+function settingsFunction2() {
     settingInsta.setCallCost(Number(callCostSettingElem.value));
-    settingInsta.setSmsCost(Number(smsCostSettingElem.value)) ;
+    settingInsta.setSmsCost(Number(smsCostSettingElem.value));
     settingInsta.setWarningLevel(Number(warningLevelSettingElem.value));
     settingInsta.setCriticalLevel(Number(criticalLevelSettingElem.value));
-    
+
 
     settingInsta.getCallCost()
     settingInsta.getSmsCost()
     settingInsta.getWarningLevel()
     settingInsta.getCriticalLevel()
     // alert(callCost)
-   // colorAdd();
+    colorAdd();
     //update the totals that is displayed on the screen.
     // callCostSettingElem.innerHTML = callCost.toFixed(2);
     // smsCostSettingElem.innerHTML = smsCost.toFixed(2);
     // warningLevelsettingElem.innerHTML = warningLevel.toFixed(2);
     // criticalLevelSettingElem.innerHTML = criticalLevel.toFixed(2);
 }
+
+function addButtonOne() {
+    var checkedRadioBtn = document.querySelector("input[name='billItemTypeWithSettings']:checked");
+
+
+    var billItemType = checkedRadioBtn.value
+
+
+    settingInsta.separate(billItemType)
+    // alert()
+    //update the totals that is displayed on the screen.
+    callTotalSettingsElem.innerHTML = settingInsta.getTotalCallCost().toFixed(2);
+    smsTotalSettingsElem.innerHTML = settingInsta.getTotalSmsCost().toFixed(2);
+
+    totalSettingsElem.innerHTML = settingInsta.getTotalCost().toFixed(2);
+    colorAdd();
+
+}
+
 function colorAdd() {
 
+    totalSettingsElem.classList.remove("warning");
+    totalSettingsElem.classList.remove("danger");
     totalSettingsElem.classList.add(settingInsta.totalClassName());
-   totalSettingsElem.classList.remove("danger");
-   totalSettingsElem.classList.remove("critical");
+
 
 
 
