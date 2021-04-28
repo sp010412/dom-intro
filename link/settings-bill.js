@@ -24,16 +24,8 @@ var updateSettingsElem = document.querySelector(".updateSettings");
 
 
 // create a variables that will keep track of all the settings
-var callCostSet = 0;
-var smsCostSet = 0;
-
-var warningLevel = 0;
-var criticalLevel = 0;
 
 // create a variables that will keep track of all three totals.
-var callsTotalDo = 0;
-var smsTotalDo = 0;
-var totalCostSet = 0;
 
 //add an event listener for when the 'Update settings' button is pressed
 updateSettingsElem.addEventListener('click', settingsFunction);
@@ -57,23 +49,30 @@ function addButtonOne() {
 
     var billItemType = checkedRadioBtn.value
 
-
+settingInsta.makeCall()
+settingInsta.sendSms()
 // alert()
 //update the totals that is displayed on the screen.
 callTotalSettingsElem.innerHTML = settingInsta.getTotalCallCost().toFixed(2);
 smsTotalSettingsElem.innerHTML = settingInsta.getTotalSmsCost().toFixed(2);
-totalCostSet = callsTotalDo + smsTotalDo;
-totalSettingsElem.innerHTML = totalCostSet.toFixed(2);
-colorAdd();
+
+totalSettingsElem.innerHTML = settingInsta.getTotalCost().toFixed(2);
+
 }
 
 function settingsFunction() {
-    callCostSet = Number(callCostSettingElem.value);
-    smsCostSet = Number(smsCostSettingElem.value);
-    warningLevel = Number(warningLevelSettingElem.value);
-    criticalLevel = Number(criticalLevelSettingElem.value);
+    settingInsta.setCallCost(Number(callCostSettingElem.value));
+    settingInsta.setSmsCost(Number(smsCostSettingElem.value)) ;
+    settingInsta.setWarningLevel(Number(warningLevelSettingElem.value));
+    settingInsta.setCriticalLevel(Number(criticalLevelSettingElem.value));
+    
+
+    settingInsta.getCallCost()
+    settingInsta.getSmsCost()
+    settingInsta.getWarningLevel()
+    settingInsta.getCriticalLevel()
     // alert(callCost)
-    colorAdd();
+   // colorAdd();
     //update the totals that is displayed on the screen.
     // callCostSettingElem.innerHTML = callCost.toFixed(2);
     // smsCostSettingElem.innerHTML = smsCost.toFixed(2);
@@ -81,20 +80,28 @@ function settingsFunction() {
     // criticalLevelSettingElem.innerHTML = criticalLevel.toFixed(2);
 }
 function colorAdd() {
-    //color the total based on the criteria
-    if (totalCostSet >= warningLevel) {
-        // adding the danger class will make the text red
-        totalSettingsElem.classList.add("warning");
-        totalSettingsElem.classList.remove("danger");
-    }
-    if (totalCostSet >= criticalLevel) {
-        totalSettingsElem.classList.remove("warning");
-        totalSettingsElem.classList.add("danger");
-    }
-    if (totalCostSet < warningLevel) {
-        totalSettingsElem.classList.remove("warning");
-    }
-    if (totalCostSet < criticalLevel) {
-        totalSettingsElem.classList.remove("danger");
-    }
+
+    totalSettingsElem.classList.add(settingInsta.totalClassName());
+   totalSettingsElem.classList.remove("danger");
+   totalSettingsElem.classList.remove("critical");
+
+
+
+
+    // //color the total based on the criteria
+    // if (totalCostSet >= warningLevel) {
+    //     // adding the danger class will make the text red
+    //     totalSettingsElem.classList.add("warning");
+    //     totalSettingsElem.classList.remove("danger");
+    // }
+    // if (totalCostSet >= criticalLevel) {
+    //     totalSettingsElem.classList.remove("warning");
+    //     totalSettingsElem.classList.add("danger");
+    // }
+    // if (totalCostSet < warningLevel) {
+    //     totalSettingsElem.classList.remove("warning");
+    // }
+    // if (totalCostSet < criticalLevel) {
+    //     totalSettingsElem.classList.remove("danger");
+    // }
 }
