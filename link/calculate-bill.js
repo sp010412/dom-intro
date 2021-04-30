@@ -17,10 +17,7 @@ var calculateInsta = calculate()
 function calculateBtnClicked() {
     // get the string entered in the textArea
     var billString = billStringElement.value;
-    //split the string
-    //var billItems = billString.split(",");
-    // a variable for the total phone bill.
-    // calculateInsta.calculate2(billString)
+
 
     //round to two decimals
     billTotalElement.innerHTML = calculateInsta.calculate2(billString).toFixed(2);

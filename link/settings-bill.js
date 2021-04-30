@@ -61,13 +61,7 @@ function settingsFunction2() {
     settingInsta.getSmsCost()
     settingInsta.getWarningLevel()
     settingInsta.getCriticalLevel()
-    // alert(callCost)
     colorAdd();
-    //update the totals that is displayed on the screen.
-    // callCostSettingElem.innerHTML = callCost.toFixed(2);
-    // smsCostSettingElem.innerHTML = smsCost.toFixed(2);
-    // warningLevelsettingElem.innerHTML = warningLevel.toFixed(2);
-    // criticalLevelSettingElem.innerHTML = criticalLevel.toFixed(2);
 }
 
 function addButtonOne() {
@@ -78,7 +72,6 @@ function addButtonOne() {
 
 
     settingInsta.separate(billItemType)
-    // alert()
     //update the totals that is displayed on the screen.
     callTotalSettingsElem.innerHTML = settingInsta.getTotalCallCost().toFixed(2);
     smsTotalSettingsElem.innerHTML = settingInsta.getTotalSmsCost().toFixed(2);
@@ -94,24 +87,4 @@ function colorAdd() {
     totalSettingsElem.classList.remove("danger");
     totalSettingsElem.classList.add(settingInsta.totalClassName());
 
-
-
-
-
-    // //color the total based on the criteria
-    // if (totalCostSet >= warningLevel) {
-    //     // adding the danger class will make the text red
-    //     totalSettingsElem.classList.add("warning");
-    //     totalSettingsElem.classList.remove("danger");
-    // }
-    // if (totalCostSet >= criticalLevel) {
-    //     totalSettingsElem.classList.remove("warning");
-    //     totalSettingsElem.classList.add("danger");
-    // }
-    // if (totalCostSet < warningLevel) {
-    //     totalSettingsElem.classList.remove("warning");
-    // }
-    // if (totalCostSet < criticalLevel) {
-    //     totalSettingsElem.classList.remove("danger");
-    // }
 }
